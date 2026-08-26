@@ -24,10 +24,13 @@ export const site = {
     "He is noted for a refined visual style and sensibility that often incorporates a sumptuous atmosphere, vibrant color palettes, and a deft blend of dark humor and suspense.",
   ],
 
-  /** The reel at the top of the homepage. */
+  /** The reel that fills the homepage. */
   reel: {
-    url: "https://vimeo.com/",
-    title: "Director Reel",
+    // Unlisted Vimeo links keep their privacy hash — don't trim it.
+    url: "https://vimeo.com/295650365/03e93492ae",
+    title: "RUNNERS Director Reel",
+    /** First frame, shown while the player loads. In /public. */
+    poster: "/reel-poster.jpg",
   },
 
   /** Longer bio for the resume page. Full sentences, one string per paragraph. */

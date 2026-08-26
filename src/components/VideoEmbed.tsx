@@ -1,9 +1,10 @@
 import { embedUrl } from "@/lib/video";
 
+/** Plain embed for project pages — full Vimeo chrome, no custom transport. */
 export function VideoEmbed({
   url,
   title,
-  placeholder = "reel coming soon",
+  placeholder = "no signal",
   className = "",
 }: {
   url: string;
@@ -15,7 +16,7 @@ export function VideoEmbed({
 
   return (
     <div
-      className={`relative w-full overflow-hidden bg-paper-deep ${className}`}
+      className={`relative w-full overflow-hidden border border-line bg-black ${className}`}
       style={{ aspectRatio: "16 / 9" }}
     >
       {src ? (
@@ -29,9 +30,7 @@ export function VideoEmbed({
         />
       ) : (
         <div className="absolute inset-0 flex items-center justify-center">
-          <span className="text-sm tracking-[0.18em] lowercase text-ink-soft/60">
-            {placeholder}
-          </span>
+          <span className="label text-dim">{placeholder}</span>
         </div>
       )}
     </div>

@@ -1,27 +1,27 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------
-   PALETTE — aged paper + charcoal ink.
-   Change these six values to reskin the whole site.
+   PALETTE — near-black instrumentation.
+   Change these values to reskin the whole site.
    --------------------------------------------------------------- */
 :root {
-  --paper: #e8e4d9;
-  --paper-deep: #ddd8ca;
-  --ink: #575551;
-  --ink-soft: #6f6c66;
-  --ghost: #cdc7b8;
-  --accent: #b8332a;
+  --bg: #08090a;
+  --panel: #0e1012;
+  --fg: #f4f5f6;
+  --dim: #8b9096;
+  --line: #262a2e;
+  --signal: #e8452f;
 }
 
 @theme inline {
-  --color-paper: var(--paper);
-  --color-paper-deep: var(--paper-deep);
-  --color-ink: var(--ink);
-  --color-ink-soft: var(--ink-soft);
-  --color-ghost: var(--ghost);
-  --color-accent: var(--accent);
-  --font-display: var(--font-display);
-  --font-sans: var(--font-body);
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-fg: var(--fg);
+  --color-dim: var(--dim);
+  --color-line: var(--line);
+  --color-signal: var(--signal);
+  --font-mono: var(--font-mono);
+  --font-sans: var(--font-sans);
 }
 
 html {
@@ -29,45 +29,27 @@ html {
 }
 
 body {
-  background-color: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-body), "Oswald", ui-sans-serif, system-ui, sans-serif;
-  font-weight: 300;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Paper grain + blotches. Generated, not an image file — nothing to load. */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  pointer-events: none;
-  background-image:
-    radial-gradient(circle at 18% 22%, rgba(150, 132, 92, 0.16), transparent 26%),
-    radial-gradient(circle at 82% 12%, rgba(150, 132, 92, 0.13), transparent 22%),
-    radial-gradient(circle at 68% 74%, rgba(142, 124, 88, 0.15), transparent 30%),
-    radial-gradient(circle at 8% 88%, rgba(142, 124, 88, 0.12), transparent 24%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.38'/%3E%3C/svg%3E");
-  mix-blend-mode: multiply;
-}
-
-/* Chipped, hand-inked edges on display type. */
-.rough {
-  filter: url(#roughen);
-}
-.rough-soft {
-  filter: url(#roughen-soft);
-}
-
-.display {
-  font-family: var(--font-display), "Anton", Impact, sans-serif;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 0.88;
+/* Monospace micro-label: the recurring unit of the interface. */
+.label {
+  font-family: var(--font-mono), ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 ::selection {
-  background: var(--ink);
-  color: var(--paper);
+  background: var(--signal);
+  color: #fff;
+}
+
+/* Focus that matches the instrumentation rather than the browser default. */
+:focus-visible {
+  outline: 1px solid var(--signal);
+  outline-offset: 2px;
 }

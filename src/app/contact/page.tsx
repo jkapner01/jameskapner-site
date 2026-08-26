@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
-import { PageHeading } from "@/components/PageHeading";
+import { PageShell } from "@/components/PageShell";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -12,39 +12,34 @@ export default function Contact() {
   const socials = site.socials.filter((s) => s.url);
 
   return (
-    <section className="mx-auto max-w-4xl px-6 pt-14 sm:px-10">
-      <PageHeading>Contact</PageHeading>
-
-      <p className="mt-10 max-w-xl text-lg leading-[1.55]">
+    <PageShell slug="contact" title="Contact">
+      <p className="mt-8 max-w-xl leading-relaxed text-dim">
         For features, commercials, branded content, and music videos.
       </p>
 
-      <div className="mt-12 space-y-8 border-t border-ink/20 pt-10">
+      <dl className="mt-10 max-w-2xl">
         <Row label="email">
           <a
             href={`mailto:${site.contact.email}`}
-            className="underline underline-offset-4 transition-colors hover:text-accent"
+            className="transition-colors hover:text-signal"
           >
             {site.contact.email}
           </a>
         </Row>
-
         {site.contact.representation && (
           <Row label="representation">{site.contact.representation}</Row>
         )}
-
         <Row label="based in">{site.location}</Row>
-
         {socials.length > 0 && (
           <Row label="elsewhere">
-            <span className="flex flex-wrap gap-x-6 gap-y-2">
+            <span className="flex flex-wrap gap-x-5 gap-y-2">
               {socials.map((s) => (
                 <a
                   key={s.label}
                   href={s.url}
                   target="_blank"
                   rel="noreferrer"
-                  className="underline underline-offset-4 transition-colors hover:text-accent"
+                  className="transition-colors hover:text-signal"
                 >
                   {s.label}
                 </a>
@@ -52,8 +47,8 @@ export default function Contact() {
             </span>
           </Row>
         )}
-      </div>
-    </section>
+      </dl>
+    </PageShell>
   );
 }
 
@@ -65,11 +60,9 @@ function Row({
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid gap-2 sm:grid-cols-[11rem_1fr]">
-      <span className="text-sm tracking-[0.08em] lowercase text-ink-soft">
-        {label}
-      </span>
-      <span className="text-lg">{children}</span>
+    <div className="flex flex-wrap gap-x-6 gap-y-1 border-b border-line py-4">
+      <dt className="label w-32 shrink-0 pt-1 text-white/30">{label}</dt>
+      <dd>{children}</dd>
     </div>
   );
 }

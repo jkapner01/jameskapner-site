@@ -1,25 +1,14 @@
 import type { Metadata } from "next";
-import { Anton, Oswald } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import { Nav } from "@/components/Nav";
-import { Footer } from "@/components/Footer";
-import { TextureDefs } from "@/components/Texture";
 import { PersonJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import { site } from "@/content/site";
 
-/* Display face for the wordmark and headings — condensed, heavy.
-   The `.rough` SVG filter is what gives it the distressed edge. */
-const display = Anton({
-  variable: "--font-display",
+const sans = Inter({ variable: "--font-sans", subsets: ["latin"] });
+const mono = JetBrains_Mono({
+  variable: "--font-mono",
   subsets: ["latin"],
-  weight: "400",
-});
-
-/* Body face — condensed to match the display type. */
-const body = Oswald({
-  variable: "--font-body",
-  subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {
@@ -46,11 +35,13 @@ export const metadata: Metadata = {
     description: site.description,
     url: site.url,
     locale: "en_US",
+    images: [{ url: site.reel.poster, width: 1280, height: 720, alt: site.name }],
   },
   twitter: {
     card: "summary_large_image",
     title: site.title,
     description: site.description,
+    images: [site.reel.poster],
   },
   robots: {
     index: true,
@@ -67,17 +58,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${display.variable} ${body.variable} h-full`}
-    >
-      <body className="flex min-h-full flex-col overflow-x-hidden">
-        <TextureDefs />
+    <html lang="en" className={`${sans.variable} ${mono.variable} h-full`}>
+      <body className="min-h-full bg-bg">
         <PersonJsonLd />
         <WebSiteJsonLd />
-        <Nav />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

@@ -2,12 +2,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { categories, projects, type CategorySlug } from "@/content/work";
 import { ProjectCard } from "@/components/ProjectCard";
-import { PageHeading } from "@/components/PageHeading";
+import { PageShell } from "@/components/PageShell";
 import { WorkJsonLd } from "@/components/JsonLd";
 import { site } from "@/content/site";
 
 export const metadata: Metadata = {
-  title: "Selected Work",
+  title: "Work",
   description: `Narrative, commercial, and branded films directed by ${site.name}.`,
   alternates: { canonical: "/work" },
 };
@@ -22,57 +22,61 @@ export default async function Work({ searchParams }: PageProps<"/work">) {
   const shown = active ? projects.filter((p) => p.category === active) : projects;
 
   return (
-    <section className="mx-auto max-w-[1600px] px-6 pt-14 sm:px-10">
+    <PageShell slug="work" title="Selected Work">
       <WorkJsonLd />
 
-      <PageHeading>Selected Work</PageHeading>
-
-      {/* Tabs — each is a real, crawlable URL, not client-side state. */}
-      <nav className="mt-7 flex flex-wrap gap-x-8 gap-y-3">
-        <Tab href="/work" label="all" active={!active} />
+      {/* Filters — real URLs, so each category is independently crawlable */}
+      <nav className="mt-5 flex flex-wrap items-center gap-2">
+        <Tab href="/work" label="all" count={projects.length} active={!active} />
         {categories.map((c) => (
           <Tab
             key={c.slug}
             href={`/work?c=${c.slug}`}
             label={c.label.toLowerCase()}
+            count={projects.filter((p) => p.category === c.slug).length}
             active={active === c.slug}
           />
         ))}
       </nav>
 
-      <div className="mt-14 grid gap-x-10 gap-y-16 sm:grid-cols-2">
-        {shown.map((p) => (
-          <ProjectCard key={p.slug} project={p} />
+      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {shown.map((p, i) => (
+          <ProjectCard key={p.slug} project={p} index={i} />
         ))}
       </div>
 
       {shown.length === 0 && (
-        <p className="mt-14 lowercase text-ink-soft">nothing here yet.</p>
+        <p className="label mt-10 text-dim">no entries</p>
       )}
-    </section>
+    </PageShell>
   );
 }
 
 function Tab({
   href,
   label,
+  count,
   active,
 }: {
   href: string;
   label: string;
+  count: number;
   active: boolean;
 }) {
   return (
     <Link
       href={href}
       scroll={false}
-      className={`text-base tracking-[0.06em] lowercase transition-colors ${
+      className={`label border px-3 py-2 transition-colors ${
         active
-          ? "text-accent underline decoration-1 underline-offset-[6px]"
-          : "text-ink-soft hover:text-ink"
+          ? "border-signal text-signal"
+          : "border-line text-dim hover:border-dim hover:text-fg"
       }`}
     >
       {label}
+      <span className="ml-2 tabular-nums text-white/25">
+        {String(count).padStart(2, "0")}
+      </span>
     </Link>
   );
 }

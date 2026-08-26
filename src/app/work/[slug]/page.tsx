@@ -4,8 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { projects, bySlug, categories } from "@/content/work";
 import { VideoEmbed } from "@/components/VideoEmbed";
+import { PageShell } from "@/components/PageShell";
 import { ProjectJsonLd } from "@/components/JsonLd";
-import { TornFrame, InkRule } from "@/components/Texture";
 import { site } from "@/content/site";
 
 export function generateStaticParams() {
@@ -40,18 +40,15 @@ export default async function Project({ params }: PageProps<"/work/[slug]">) {
   const category = categories.find((c) => c.slug === p.category);
 
   return (
-    <article className="mx-auto max-w-[1400px] px-6 pt-12 sm:px-10">
+    <PageShell slug={`work/${p.slug}`} title={p.title}>
       <ProjectJsonLd slug={p.slug} />
 
-      <TornFrame>
+      <div className="mt-6">
         {p.video ? (
-          <VideoEmbed
-            url={p.video}
-            title={`${p.title} — directed by ${site.name}`}
-          />
+          <VideoEmbed url={p.video} title={`${p.title} — directed by ${site.name}`} />
         ) : (
           <div
-            className="relative w-full overflow-hidden bg-paper-deep"
+            className="relative w-full overflow-hidden border border-line bg-black"
             style={{ aspectRatio: "16 / 9" }}
           >
             <Image
@@ -64,52 +61,66 @@ export default async function Project({ params }: PageProps<"/work/[slug]">) {
             />
           </div>
         )}
-      </TornFrame>
+      </div>
 
-      <div className="mt-12 grid gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)]">
         <div>
-          <Link
-            href={`/work?c=${p.category}`}
-            className="text-sm tracking-[0.06em] lowercase text-ink-soft transition-colors hover:text-accent"
-          >
-            {category?.label.toLowerCase()}
-          </Link>
-          <h1 className="display rough mt-2 text-[clamp(2.5rem,5.5vw,4.5rem)]">
-            {p.title}
-          </h1>
-          <InkRule className="mt-1 text-ink" />
-          <p className="mt-4 text-sm lowercase text-ink-soft">
-            {[p.client, p.format, p.year].filter(Boolean).join(" · ")}
-          </p>
+          <Spec label="category">
+            <Link
+              href={`/work?c=${p.category}`}
+              className="transition-colors hover:text-signal"
+            >
+              {category?.label.toLowerCase()}
+            </Link>
+          </Spec>
+          <Spec label="format">{p.format.toLowerCase()}</Spec>
+          {p.client && <Spec label="client">{p.client}</Spec>}
+          <Spec label="year">{p.year}</Spec>
 
-          <p className="mt-8 max-w-2xl text-lg leading-[1.55]">
+          <p className="mt-8 max-w-2xl leading-relaxed text-dim">
             {p.description}
           </p>
         </div>
 
         {p.credits && p.credits.length > 0 && (
-          <dl className="h-fit border-t border-ink/20 pt-6 text-[15px]">
-            {p.credits.map((c) => (
-              <div
-                key={c.role}
-                className="flex justify-between gap-6 border-b border-ink/10 py-3"
-              >
-                <dt className="lowercase text-ink-soft">{c.role}</dt>
-                <dd className="text-right">{c.name}</dd>
-              </div>
-            ))}
-          </dl>
+          <div className="h-fit border border-line bg-panel p-4">
+            <p className="label mb-3 text-white/30">credits</p>
+            <dl>
+              {p.credits.map((c) => (
+                <div
+                  key={c.role}
+                  className="flex justify-between gap-4 border-t border-line py-2 text-sm"
+                >
+                  <dt className="label text-dim">{c.role}</dt>
+                  <dd className="text-right">{c.name}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
         )}
       </div>
 
-      <div className="mt-20">
-        <Link
-          href="/work"
-          className="text-sm lowercase text-ink-soft transition-colors hover:text-accent"
-        >
-          ← all work
-        </Link>
-      </div>
-    </article>
+      <Link
+        href="/work"
+        className="label mt-12 inline-block text-dim transition-colors hover:text-signal"
+      >
+        ← all work
+      </Link>
+    </PageShell>
+  );
+}
+
+function Spec({
+  label,
+  children,
+}: {
+  label: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="flex gap-4 border-b border-line py-2 text-sm">
+      <span className="label w-24 shrink-0 pt-0.5 text-white/30">{label}</span>
+      <span>{children}</span>
+    </div>
   );
 }

@@ -1,35 +1,48 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Project } from "@/content/work";
-import { TornFrame } from "@/components/Texture";
 
-export function ProjectCard({ project }: { project: Project }) {
+export function ProjectCard({
+  project,
+  index,
+}: {
+  project: Project;
+  index: number;
+}) {
   return (
-    <Link href={`/work/${project.slug}`} className="group block">
-      <TornFrame>
-        <div
-          className="relative w-full overflow-hidden bg-paper-deep"
-          style={{ aspectRatio: "16 / 9" }}
-        >
-          <Image
-            src={project.thumbnail}
-            alt={project.title}
-            fill
-            sizes="(max-width: 640px) 100vw, 50vw"
-            className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.04]"
-          />
-        </div>
-      </TornFrame>
-
-      <div className="mt-6 flex items-baseline justify-between gap-5">
-        <h3 className="display rough-soft text-2xl transition-colors group-hover:text-accent sm:text-3xl">
-          {project.title}
-        </h3>
-        <span className="shrink-0 text-sm text-ink-soft">{project.year}</span>
+    <Link
+      href={`/work/${project.slug}`}
+      className="group block border border-line bg-panel transition-colors hover:border-signal/60"
+    >
+      <div
+        className="relative w-full overflow-hidden bg-black"
+        style={{ aspectRatio: "16 / 9" }}
+      >
+        <Image
+          src={project.thumbnail}
+          alt={project.title}
+          fill
+          sizes="(max-width: 640px) 100vw, 50vw"
+          className="object-cover opacity-80 transition-all duration-500 group-hover:scale-[1.02] group-hover:opacity-100"
+        />
+        <span className="label absolute top-2 left-2 bg-black/70 px-1.5 py-1 text-dim">
+          {String(index + 1).padStart(2, "0")}
+        </span>
       </div>
-      <p className="mt-1 text-sm lowercase text-ink-soft">
-        {[project.client, project.format].filter(Boolean).join(" · ")}
-      </p>
+
+      <div className="flex items-baseline justify-between gap-4 border-t border-line px-3 py-3">
+        <div className="min-w-0">
+          <h3 className="truncate text-base font-medium transition-colors group-hover:text-signal">
+            {project.title}
+          </h3>
+          <p className="label mt-1 truncate text-dim">
+            {[project.client, project.format].filter(Boolean).join(" / ")}
+          </p>
+        </div>
+        <span className="label shrink-0 tabular-nums text-dim">
+          {project.year}
+        </span>
+      </div>
     </Link>
   );
 }

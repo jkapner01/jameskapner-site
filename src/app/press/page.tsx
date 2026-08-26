@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
-import { PageHeading } from "@/components/PageHeading";
+import { PageShell } from "@/components/PageShell";
 
 export const metadata: Metadata = {
   title: "Press",
@@ -10,47 +10,40 @@ export const metadata: Metadata = {
 
 export default function Press() {
   return (
-    <section className="mx-auto max-w-4xl px-6 pt-14 sm:px-10">
-      <PageHeading>Press</PageHeading>
-
+    <PageShell slug="press" title="Press">
       {site.press.length > 0 ? (
-        <ul className="mt-12 border-t border-ink/20">
+        <ul className="mt-8">
           {site.press.map((item) => {
-            const inner = (
+            const body = (
               <>
-                <span className="text-sm tracking-[0.06em] lowercase text-ink-soft">
-                  {item.outlet}
-                </span>
-                <span className="mt-1 block text-xl leading-snug transition-colors group-hover:text-accent">
-                  {item.headline}
-                </span>
+                <div className="min-w-0">
+                  <span className="label text-white/30">{item.outlet}</span>
+                  <span className="mt-1 block text-lg leading-snug transition-colors group-hover:text-signal">
+                    {item.headline}
+                  </span>
+                </div>
+                {item.year && (
+                  <span className="label shrink-0 tabular-nums text-dim">
+                    {item.year}
+                  </span>
+                )}
               </>
             );
 
             return (
-              <li key={item.headline} className="border-b border-ink/10">
+              <li key={item.headline} className="border-b border-line">
                 {item.url ? (
                   <a
                     href={item.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="group flex items-baseline justify-between gap-6 py-6"
+                    className="group flex items-baseline justify-between gap-6 py-5"
                   >
-                    <span>{inner}</span>
-                    {item.year && (
-                      <span className="shrink-0 text-sm text-ink-soft">
-                        {item.year}
-                      </span>
-                    )}
+                    {body}
                   </a>
                 ) : (
-                  <div className="flex items-baseline justify-between gap-6 py-6">
-                    <span>{inner}</span>
-                    {item.year && (
-                      <span className="shrink-0 text-sm text-ink-soft">
-                        {item.year}
-                      </span>
-                    )}
+                  <div className="group flex items-baseline justify-between gap-6 py-5">
+                    {body}
                   </div>
                 )}
               </li>
@@ -58,8 +51,8 @@ export default function Press() {
           })}
         </ul>
       ) : (
-        <p className="mt-14 lowercase text-ink-soft">press coming soon.</p>
+        <p className="label mt-12 text-dim">no entries</p>
       )}
-    </section>
+    </PageShell>
   );
 }
