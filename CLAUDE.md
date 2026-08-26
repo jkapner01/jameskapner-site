@@ -17,7 +17,7 @@ touching for routine updates:
 
 | To change | Edit |
 |---|---|
-| Name, bio, reel, contact, socials, SEO description | `src/content/site.ts` |
+| Name, bio, reel, resume, press, contact, socials, SEO copy | `src/content/site.ts` |
 | Projects — add, remove, reorder, retitle | `src/content/work.ts` |
 
 Both files are heavily commented. Adding a project = copying a block in
@@ -32,14 +32,15 @@ src/
   content/site.ts      all site-wide copy + SEO strings
   content/work.ts      the project list (single source of truth)
   app/
-    page.tsx           home — reel + selected work
+    page.tsx           home — name/bio + reel, then selected work
     work/page.tsx      work index with Narrative/Commercial/Branded tabs
     work/[slug]/       one page per project
-    about/, contact/
+    resume/, press/, contact/
     sitemap.ts, robots.ts, llms.txt/
   components/
     JsonLd.tsx         structured data (see SEO below)
-    Nav, Footer, VideoEmbed, ProjectCard
+    Texture.tsx        SVG roughen filters, ink rule, torn frame
+    Nav, Footer, VideoEmbed, ProjectCard, PageHeading
 ```
 
 ## SEO / AI-search rules
@@ -59,9 +60,29 @@ These exist on purpose — don't strip them out:
   director" beats "a visionary storyteller." Literal phrasing is what gets
   retrieved and quoted.
 
+## Look and feel
+
+Modeled on James's existing site: aged paper ground, charcoal ink, distressed
+condensed display type, hand-drawn rules, torn-edge image frames.
+
+- **Palette** — six CSS variables at the top of `src/app/globals.css`
+  (`--paper`, `--paper-deep`, `--ink`, `--ink-soft`, `--ghost`, `--accent`).
+  Changing those six reskins the entire site.
+- **Paper texture** is generated in CSS (`body::before`) from an SVG noise
+  filter plus a few soft blotches. No image file, nothing to download.
+- **Distressed edges** come from the `#roughen` SVG filter in
+  `components/Texture.tsx`, applied via the `.rough` / `.rough-soft` classes.
+  This is why headlines look chipped rather than crisp — it works on any
+  typeface, so swapping fonts keeps the effect.
+- **Type** — Anton (display) + Oswald (body), both from Google Fonts, chosen
+  to match the condensed poster feel of the original. If James has the
+  original licensed font, swap it in `app/layout.tsx` and the roughening
+  still applies.
+- Nav is lowercase throughout. That's deliberate, matching the reference.
+
 ## Stack
 
-Next.js 16 (App Router) · TypeScript · Tailwind v4 · deployed on Vercel.
+Next.js 16 (App Router) · TypeScript · Tailwind v4 · Vercel.
 
 ## Workflow
 

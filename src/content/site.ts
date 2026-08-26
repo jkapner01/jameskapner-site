@@ -8,49 +8,82 @@ export const site = {
   role: "Film Director",
   location: "Los Angeles, CA",
 
-  /** Used in the browser tab and by Google. Keep under ~60 characters. */
+  /** Browser tab + Google result headline. Keep under ~60 characters. */
   title: "James Kapner — Film Director | Los Angeles",
 
-  /** The one-sentence description Google and AI search engines read first. */
+  /** The sentence Google and AI search engines read first. */
   description:
-    "James Kapner is a Los Angeles–based film director working across narrative features, commercials, and branded content.",
+    "James Kapner is an award-winning Los Angeles based film director whose work spans feature films, shorts, commercials, branded content, and music videos.",
 
-  /** Short line under the name on the homepage. */
-  tagline: "Director of narrative, commercial, and branded film.",
-
-  /** The main reel that plays at the top of the homepage. */
-  reel: {
-    // Paste a Vimeo or YouTube link here.
-    url: "https://vimeo.com/76979871",
-    title: "Director's Reel",
-    // Optional: a poster image in /public, e.g. "/reel-poster.jpg"
-    poster: "",
-  },
-
-  /** The About page. Write in full paragraphs — one string per paragraph. */
-  about: [
-    "James Kapner is a film director based in Los Angeles. His work spans narrative features, commercial campaigns, and branded content, unified by a focus on character, restraint, and a distinct visual point of view.",
-    "He has directed a feature film alongside work for brands and agencies, and continues to develop original narrative projects.",
+  /**
+   * Homepage bio. The first paragraph is written to follow the name,
+   * so it opens with "is an award winning..." — that's intentional.
+   */
+  intro: [
+    "is an award winning Los Angeles based film director whose work spans across feature films, shorts, commercials, and an extensive catalog of branded content and music videos.",
+    "He is noted for a refined visual style and sensibility that often incorporates a sumptuous atmosphere, vibrant color palettes, and a deft blend of dark humor and suspense.",
   ],
 
-  /** Selected press, festivals, or awards. Remove any you don't need. */
-  recognition: [
-    // { label: "Festival Name — Official Selection", year: "2024" },
-  ] as { label: string; year?: string; url?: string }[],
+  /** The reel at the top of the homepage. */
+  reel: {
+    url: "https://vimeo.com/",
+    title: "Director Reel",
+  },
+
+  /** Longer bio for the resume page. Full sentences, one string per paragraph. */
+  about: [
+    "James Kapner is an award winning Los Angeles based film director whose work spans across feature films, shorts, commercials, and an extensive catalog of branded content and music videos.",
+    "He is noted for a refined visual style and sensibility that often incorporates a sumptuous atmosphere, vibrant color palettes, and a deft blend of dark humor and suspense.",
+  ],
+
+  /** Resume page. Delete any section you don't want — empty ones disappear. */
+  resume: {
+    /** Optional PDF in /public, e.g. "/james-kapner-resume.pdf". "" hides the link. */
+    pdf: "",
+    sections: [
+      {
+        heading: "Film",
+        entries: [
+          // { title: "Feature Title", role: "Director", detail: "Production Co.", year: "2024" },
+        ],
+      },
+      {
+        heading: "Commercial & Branded",
+        entries: [
+          // { title: "Client", role: "Director", detail: "Agency", year: "2024" },
+        ],
+      },
+      {
+        heading: "Awards & Festivals",
+        entries: [
+          // { title: "Festival Name", role: "Official Selection", detail: "", year: "2024" },
+        ],
+      },
+    ] as {
+      heading: string;
+      entries: { title: string; role?: string; detail?: string; year?: string }[];
+    }[],
+  },
+
+  /** Press page. Each item is a link out to the article. */
+  press: [
+    // { outlet: "Publication", headline: "Title of the piece", url: "https://", year: "2024" },
+  ] as { outlet: string; headline: string; url?: string; year?: string }[],
 
   contact: {
     email: "hello@jameskapner.com",
-    // Optional — leave as "" to hide.
+    /** Optional — leave "" to hide the row. */
     representation: "",
   },
 
   socials: [
-    { label: "Instagram", url: "https://instagram.com/" },
-    { label: "LinkedIn", url: "https://linkedin.com/in/" },
+    { label: "Instagram", url: "" },
+    { label: "LinkedIn", url: "" },
     { label: "IMDb", url: "" },
+    { label: "Vimeo", url: "" },
   ],
 
-  /** Canonical production URL. Update once the domain is live. */
+  /** Canonical production URL. Update when the domain goes live. */
   url: "https://jameskapner.com",
 };
 

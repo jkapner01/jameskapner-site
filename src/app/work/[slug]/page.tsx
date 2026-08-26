@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { projects, bySlug, categories } from "@/content/work";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ProjectJsonLd } from "@/components/JsonLd";
+import { TornFrame, InkRule } from "@/components/Texture";
 import { site } from "@/content/site";
 
 export function generateStaticParams() {
@@ -39,58 +40,74 @@ export default async function Project({ params }: PageProps<"/work/[slug]">) {
   const category = categories.find((c) => c.slug === p.category);
 
   return (
-    <article className="mx-auto max-w-5xl px-6 pt-12 sm:pt-16">
+    <article className="mx-auto max-w-[1400px] px-6 pt-12 sm:px-10">
       <ProjectJsonLd slug={p.slug} />
 
-      {p.video ? (
-        <VideoEmbed url={p.video} title={`${p.title} — directed by ${site.name}`} />
-      ) : (
-        <div
-          className="relative w-full overflow-hidden bg-neutral-900"
-          style={{ aspectRatio: "16 / 9" }}
-        >
-          <Image
-            src={p.thumbnail}
-            alt={p.title}
-            fill
-            sizes="100vw"
-            priority
-            className="object-cover"
+      <TornFrame>
+        {p.video ? (
+          <VideoEmbed
+            url={p.video}
+            title={`${p.title} — directed by ${site.name}`}
           />
+        ) : (
+          <div
+            className="relative w-full overflow-hidden bg-paper-deep"
+            style={{ aspectRatio: "16 / 9" }}
+          >
+            <Image
+              src={p.thumbnail}
+              alt={p.title}
+              fill
+              sizes="100vw"
+              priority
+              className="object-cover"
+            />
+          </div>
+        )}
+      </TornFrame>
+
+      <div className="mt-12 grid gap-x-16 gap-y-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
+        <div>
+          <Link
+            href={`/work?c=${p.category}`}
+            className="text-sm tracking-[0.06em] lowercase text-ink-soft transition-colors hover:text-accent"
+          >
+            {category?.label.toLowerCase()}
+          </Link>
+          <h1 className="display rough mt-2 text-[clamp(2.5rem,5.5vw,4.5rem)]">
+            {p.title}
+          </h1>
+          <InkRule className="mt-1 text-ink" />
+          <p className="mt-4 text-sm lowercase text-ink-soft">
+            {[p.client, p.format, p.year].filter(Boolean).join(" · ")}
+          </p>
+
+          <p className="mt-8 max-w-2xl text-lg leading-[1.55]">
+            {p.description}
+          </p>
         </div>
-      )}
 
-      <header className="mt-10">
+        {p.credits && p.credits.length > 0 && (
+          <dl className="h-fit border-t border-ink/20 pt-6 text-[15px]">
+            {p.credits.map((c) => (
+              <div
+                key={c.role}
+                className="flex justify-between gap-6 border-b border-ink/10 py-3"
+              >
+                <dt className="lowercase text-ink-soft">{c.role}</dt>
+                <dd className="text-right">{c.name}</dd>
+              </div>
+            ))}
+          </dl>
+        )}
+      </div>
+
+      <div className="mt-20">
         <Link
-          href={`/work?c=${p.category}`}
-          className="text-xs tracking-[0.2em] uppercase opacity-40 transition-opacity hover:opacity-80"
+          href="/work"
+          className="text-sm lowercase text-ink-soft transition-colors hover:text-accent"
         >
-          {category?.label}
-        </Link>
-        <h1 className="mt-3 text-3xl tracking-tight sm:text-4xl">{p.title}</h1>
-        <p className="mt-2 text-sm opacity-50">
-          {[p.client, p.format, p.year].filter(Boolean).join(" · ")}
-        </p>
-      </header>
-
-      <p className="mt-8 max-w-2xl text-lg leading-relaxed opacity-80">
-        {p.description}
-      </p>
-
-      {p.credits && p.credits.length > 0 && (
-        <dl className="mt-12 grid max-w-md gap-y-3 border-t border-white/10 pt-8 text-sm sm:grid-cols-[10rem_1fr]">
-          {p.credits.map((c) => (
-            <div key={c.role} className="contents">
-              <dt className="opacity-40">{c.role}</dt>
-              <dd className="opacity-80">{c.name}</dd>
-            </div>
-          ))}
-        </dl>
-      )}
-
-      <div className="mt-16 border-t border-white/10 pt-8">
-        <Link href="/work" className="text-sm opacity-60 hover:opacity-100">
-          ← All work
+          ← all work
         </Link>
       </div>
     </article>

@@ -3,42 +3,69 @@ import { site } from "@/content/site";
 import { featured } from "@/content/work";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { ProjectCard } from "@/components/ProjectCard";
+import { InkRule, TornFrame } from "@/components/Texture";
 
 export default function Home() {
   const work = featured();
 
   return (
     <>
-      {/* Reel */}
-      <section className="mx-auto max-w-6xl px-6 pt-12 sm:pt-16">
-        <VideoEmbed url={site.reel.url} title={`${site.name} — ${site.reel.title}`} />
-      </section>
+      {/* Masthead: name + bio on the left, reel on the right. */}
+      <section className="mx-auto max-w-[1600px] px-6 pt-10 sm:px-10 lg:pt-16">
+        <div className="grid items-start gap-x-16 gap-y-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
+          {/* Left column */}
+          <div className="max-w-xl">
+            <h1 className="display rough text-[clamp(3.5rem,9vw,7.5rem)]">
+              {site.name}
+            </h1>
+            <InkRule className="-mt-1 mb-9 text-ink" />
 
-      {/* Name + positioning. This block is what search engines read first. */}
-      <section className="mx-auto max-w-6xl px-6 pt-12 sm:pt-16">
-        <h1 className="text-4xl leading-[1.05] tracking-tight sm:text-6xl">
-          {site.name}
-        </h1>
-        <p className="mt-4 max-w-2xl text-lg opacity-60 sm:text-xl">
-          {site.role} based in {site.location}. {site.tagline}
-        </p>
+            <div className="space-y-7 text-[clamp(1rem,1.35vw,1.2rem)] leading-[1.55] text-ink">
+              {site.intro.map((p, i) => (
+                <p key={i}>
+                  {i === 0 && (
+                    <span className="sr-only">{site.name} </span>
+                  )}
+                  {p}
+                </p>
+              ))}
+            </div>
+          </div>
+
+          {/* Right column — reel under its watermark */}
+          <div className="lg:pt-24">
+            <p
+              aria-hidden
+              className="display rough-soft mb-3 text-right text-[clamp(3rem,7vw,6rem)] text-ghost"
+            >
+              Reel
+            </p>
+            <TornFrame>
+              <VideoEmbed
+                url={site.reel.url}
+                title={`${site.name} — ${site.reel.title}`}
+              />
+            </TornFrame>
+          </div>
+        </div>
       </section>
 
       {/* Selected work */}
-      <section className="mx-auto max-w-6xl px-6 pt-20">
-        <div className="flex items-baseline justify-between border-b border-white/10 pb-4">
-          <h2 className="text-sm tracking-[0.2em] uppercase opacity-60">
+      <section id="work" className="mx-auto max-w-[1600px] px-6 pt-28 sm:px-10">
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <h2 className="display rough text-[clamp(2.25rem,4.5vw,3.75rem)]">
             Selected Work
           </h2>
           <Link
             href="/work"
-            className="text-sm opacity-60 transition-opacity hover:opacity-100"
+            className="pb-2 text-sm tracking-[0.12em] lowercase text-ink-soft transition-colors hover:text-accent"
           >
-            All work →
+            see all →
           </Link>
         </div>
+        <InkRule className="mt-1 mb-12 text-ink" />
 
-        <div className="mt-10 grid gap-x-8 gap-y-14 sm:grid-cols-2">
+        <div className="grid gap-x-10 gap-y-16 sm:grid-cols-2">
           {work.map((p) => (
             <ProjectCard key={p.slug} project={p} />
           ))}

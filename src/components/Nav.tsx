@@ -6,32 +6,39 @@ import { useState } from "react";
 import { site } from "@/content/site";
 
 const links = [
-  { href: "/work", label: "Work" },
-  { href: "/about", label: "About" },
-  { href: "/contact", label: "Contact" },
+  { href: "/work", label: "selected work" },
+  { href: "/resume", label: "resume" },
+  { href: "/press", label: "press" },
+  { href: "/contact", label: "contact" },
 ];
 
 export function Nav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const home = pathname === "/";
 
   return (
-    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/80 backdrop-blur">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+    <header className="relative z-50">
+      <nav className="mx-auto flex max-w-[1600px] items-start justify-between gap-6 px-6 pt-9 sm:px-10">
+        {/* On the homepage the name is the headline, so the mark is hidden here. */}
         <Link
           href="/"
-          className="text-sm tracking-[0.2em] uppercase transition-opacity hover:opacity-60"
+          className={`display rough text-2xl transition-opacity hover:opacity-60 sm:text-3xl ${
+            home ? "invisible" : ""
+          }`}
+          aria-hidden={home}
+          tabIndex={home ? -1 : undefined}
         >
           {site.name}
         </Link>
 
-        <ul className="hidden gap-8 sm:flex">
+        <ul className="hidden items-center gap-9 pt-2 sm:flex">
           {links.map((l) => (
             <li key={l.href}>
               <Link
                 href={l.href}
-                className={`text-sm tracking-wide transition-opacity hover:opacity-60 ${
-                  pathname.startsWith(l.href) ? "opacity-100" : "opacity-60"
+                className={`text-[15px] tracking-[0.06em] lowercase transition-colors hover:text-accent ${
+                  pathname.startsWith(l.href) ? "text-accent" : "text-ink"
                 }`}
               >
                 {l.label}
@@ -44,21 +51,20 @@ export function Nav() {
           type="button"
           onClick={() => setOpen((v) => !v)}
           aria-expanded={open}
-          aria-label="Menu"
-          className="sm:hidden"
+          className="pt-2 text-[15px] tracking-[0.06em] lowercase sm:hidden"
         >
-          <span className="text-sm tracking-wide">{open ? "Close" : "Menu"}</span>
+          {open ? "close" : "menu"}
         </button>
       </nav>
 
       {open && (
-        <ul className="border-t border-white/10 px-6 pb-6 sm:hidden">
+        <ul className="mx-6 mt-6 border-t border-ink/20 pt-2 sm:hidden">
           {links.map((l) => (
             <li key={l.href}>
               <Link
                 href={l.href}
                 onClick={() => setOpen(false)}
-                className="block py-3 text-lg"
+                className="block py-3 text-xl lowercase"
               >
                 {l.label}
               </Link>

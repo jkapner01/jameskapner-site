@@ -1,14 +1,27 @@
 @import "tailwindcss";
 
+/* ---------------------------------------------------------------
+   PALETTE — aged paper + charcoal ink.
+   Change these six values to reskin the whole site.
+   --------------------------------------------------------------- */
 :root {
-  --background: #050505;
-  --foreground: #f2f2f2;
+  --paper: #e8e4d9;
+  --paper-deep: #ddd8ca;
+  --ink: #575551;
+  --ink-soft: #6f6c66;
+  --ghost: #cdc7b8;
+  --accent: #b8332a;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --color-paper: var(--paper);
+  --color-paper-deep: var(--paper-deep);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ghost: var(--ghost);
+  --color-accent: var(--accent);
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
 }
 
 html {
@@ -16,13 +29,45 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body), "Oswald", ui-sans-serif, system-ui, sans-serif;
+  font-weight: 300;
   -webkit-font-smoothing: antialiased;
 }
 
+/* Paper grain + blotches. Generated, not an image file — nothing to load. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(150, 135, 100, 0.09), transparent 26%),
+    radial-gradient(circle at 82% 12%, rgba(150, 135, 100, 0.07), transparent 22%),
+    radial-gradient(circle at 68% 74%, rgba(140, 125, 92, 0.08), transparent 30%),
+    radial-gradient(circle at 8% 88%, rgba(140, 125, 92, 0.07), transparent 24%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.24'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+/* Chipped, hand-inked edges on display type. */
+.rough {
+  filter: url(#roughen);
+}
+.rough-soft {
+  filter: url(#roughen-soft);
+}
+
+.display {
+  font-family: var(--font-display), "Anton", Impact, sans-serif;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 0.88;
+}
+
 ::selection {
-  background: #f2f2f2;
-  color: #050505;
+  background: var(--ink);
+  color: var(--paper);
 }
