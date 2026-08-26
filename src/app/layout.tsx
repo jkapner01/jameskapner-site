@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
+import { Inter, JetBrains_Mono, Fraunces } from "next/font/google";
 import "./globals.css";
 import { PersonJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import { site } from "@/content/site";
@@ -9,6 +9,12 @@ const mono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+});
+const wordmark = Fraunces({
+  variable: "--font-wordmark",
+  subsets: ["latin"],
+  weight: ["500"],
+  style: ["italic"],
 });
 
 export const metadata: Metadata = {
@@ -58,7 +64,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} h-full`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${wordmark.variable} h-full`}>
       <body className="min-h-full bg-bg">
         <PersonJsonLd />
         <WebSiteJsonLd />
