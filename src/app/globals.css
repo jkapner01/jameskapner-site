@@ -11,6 +11,10 @@
   --ink-soft: #6f6c66;
   --ghost: #cdc7b8;
   --accent: #b8332a;
+
+  /* Paper texture strength — see PAPER TEXTURE below. */
+  --aging: 0.9;
+  --grain: 1;
 }
 
 @theme inline {
@@ -36,20 +40,43 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Paper grain + blotches. Generated, not an image file — nothing to load. */
-body::before {
+/* ---------------------------------------------------------------
+   PAPER TEXTURE — two generated layers, no image files.
+     aging  soft stains + fibrous mottling in the sheet
+     grain  fine tooth, the part you notice up close
+   Both noise layers run through feComponentTransfer, which squeezes
+   them into a narrow band just under white. That's what lets the grain
+   read strongly without the page darkening into mud — raise the
+   `slope` values for more contrast, the `intercept` for a lighter sheet.
+   Overall strength lives on --aging / --grain in :root; 0 gives flat paper,
+   1 is full strength. Past 1, raise the `slope` values instead.
+   --------------------------------------------------------------- */
+body::before,
+body::after {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background-image:
-    radial-gradient(circle at 18% 22%, rgba(150, 132, 92, 0.16), transparent 26%),
-    radial-gradient(circle at 82% 12%, rgba(150, 132, 92, 0.13), transparent 22%),
-    radial-gradient(circle at 68% 74%, rgba(142, 124, 88, 0.15), transparent 30%),
-    radial-gradient(circle at 8% 88%, rgba(142, 124, 88, 0.12), transparent 24%),
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.38'/%3E%3C/svg%3E");
   mix-blend-mode: multiply;
+}
+
+body::before {
+  background-image:
+    radial-gradient(circle at 18% 22%, rgba(150, 132, 92, 0.15), transparent 30%),
+    radial-gradient(circle at 82% 12%, rgba(150, 132, 92, 0.12), transparent 26%),
+    radial-gradient(circle at 68% 74%, rgba(142, 124, 88, 0.14), transparent 34%),
+    radial-gradient(circle at 8% 88%, rgba(142, 124, 88, 0.11), transparent 28%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.055' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.24' intercept='0.78'/%3E%3CfeFuncG type='linear' slope='0.24' intercept='0.78'/%3E%3CfeFuncB type='linear' slope='0.24' intercept='0.78'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='600' height='600' filter='url(%23p)'/%3E%3C/svg%3E");
+  background-size: auto, auto, auto, auto, 600px 600px;
+  background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
+  opacity: var(--aging);
+}
+
+body::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='0.58' intercept='0.54'/%3E%3CfeFuncG type='linear' slope='0.58' intercept='0.54'/%3E%3CfeFuncB type='linear' slope='0.58' intercept='0.54'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  opacity: var(--grain);
 }
 
 /* Chipped, hand-inked edges on display type. */
