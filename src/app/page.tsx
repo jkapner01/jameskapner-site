@@ -14,13 +14,16 @@ export default function Home() {
       <section className="mx-auto max-w-[1600px] px-6 pt-10 sm:px-10 lg:pt-16">
         <div className="grid items-start gap-x-16 gap-y-14 lg:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)]">
           {/* Left column */}
-          <div className="max-w-xl">
-            <h1 className="display rough text-[clamp(3.5rem,9vw,7.5rem)]">
-              {site.name}
-            </h1>
-            <InkRule className="-mt-1 mb-9 text-ink" />
+          <div>
+            {/* inline-block so the hand-drawn rule matches the name's width */}
+            <div className="inline-block">
+              <h1 className="display rough whitespace-nowrap text-[clamp(2.5rem,6.5vw,8rem)]">
+                {site.name}
+              </h1>
+              <InkRule className="mt-1 text-ink" />
+            </div>
 
-            <div className="space-y-7 text-[clamp(1rem,1.35vw,1.2rem)] leading-[1.55] text-ink">
+            <div className="mt-9 max-w-xl space-y-7 text-[clamp(1rem,1.3vw,1.15rem)] font-normal leading-[1.55] text-ink">
               {site.intro.map((p, i) => (
                 <p key={i}>
                   {i === 0 && (
@@ -53,7 +56,7 @@ export default function Home() {
       {/* Selected work */}
       <section id="work" className="mx-auto max-w-[1600px] px-6 pt-28 sm:px-10">
         <div className="flex flex-wrap items-end justify-between gap-4">
-          <h2 className="display rough text-[clamp(2.25rem,4.5vw,3.75rem)]">
+          <h2 className="display rough text-[clamp(2.25rem,4.5vw,3.5rem)]">
             Selected Work
           </h2>
           <Link

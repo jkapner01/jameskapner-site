@@ -37,7 +37,7 @@ export function Nav() {
             <li key={l.href}>
               <Link
                 href={l.href}
-                className={`text-[15px] tracking-[0.06em] lowercase transition-colors hover:text-accent ${
+                className={`text-[15px] font-normal tracking-[0.06em] lowercase transition-colors hover:text-accent ${
                   pathname.startsWith(l.href) ? "text-accent" : "text-ink"
                 }`}
               >
