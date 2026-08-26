@@ -12,11 +12,7 @@ import { ReelStage } from "@/components/reel/ReelStage";
 export default function Home() {
   return (
     <>
-      <ReelStage
-        url={site.reel.url}
-        label={site.reel.title}
-        poster={site.reel.poster}
-      />
+      <ReelStage url={site.reel.url} poster={site.reel.poster} />
 
       <div className="pointer-events-none fixed inset-0 z-30">
         <HudBar overlay />

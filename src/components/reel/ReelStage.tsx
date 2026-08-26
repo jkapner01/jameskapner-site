@@ -11,11 +11,9 @@ import { CommandBar } from "./CommandBar";
  */
 export function ReelStage({
   url,
-  label,
   poster,
 }: {
   url: string;
-  label: string;
   poster?: string;
 }) {
   const { hostRef, state, toggle, setMuted, seek } = useVimeo(url);
@@ -100,7 +98,6 @@ export function ReelStage({
       <div className="pointer-events-none absolute inset-x-0 bottom-0">
         <CommandBar
           state={state}
-          label={label}
           onToggle={toggle}
           onSeek={seek}
           onMute={setMuted}

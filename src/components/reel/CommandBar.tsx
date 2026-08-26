@@ -10,13 +10,11 @@ import { timecode, clock } from "@/lib/timecode";
  */
 export function CommandBar({
   state,
-  label,
   onToggle,
   onSeek,
   onMute,
 }: {
   state: PlayerState;
-  label: string;
   onToggle: () => void;
   onSeek: (seconds: number) => void;
   onMute: (muted: boolean) => void;
@@ -120,7 +118,7 @@ export function CommandBar({
 
         {/* slug — the thing being played */}
         <span className="hidden min-w-0 flex-1 truncate text-dim md:block">
-          <span className="text-white/30">reel /</span> {label}
+          reel
         </span>
 
         <span className="ml-auto shrink-0 tabular-nums text-white md:ml-0">
