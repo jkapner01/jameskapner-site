@@ -15,7 +15,7 @@ export function VideoEmbed({
 
   return (
     <div
-      className={`relative w-full overflow-hidden bg-paper-deep/55 ${className}`}
+      className={`relative w-full overflow-hidden bg-paper-deep ${className}`}
       style={{ aspectRatio: "16 / 9" }}
     >
       {src ? (
