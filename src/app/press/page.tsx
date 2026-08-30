@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Press() {
   return (
-    <PageShell slug="press" title="Press">
+    <PageShell slug="press" title="Press" sectionHeader>
       {site.press.length > 0 ? (
         <ul className="mt-8">
           {site.press.map((item) => {

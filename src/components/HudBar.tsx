@@ -33,7 +33,7 @@ export function HudBar({ overlay = false }: { overlay?: boolean }) {
       <div className="flex items-center justify-between gap-6 px-4 py-4 sm:px-6">
         {/* identity */}
         <Link href="/" className="group flex items-baseline gap-3">
-          <span className="text-[13px] font-medium tracking-[0.24em] uppercase transition-colors group-hover:text-signal">
+          <span className="header-font text-base transition-colors group-hover:text-signal">
             {site.name}
           </span>
           <span className={`label hidden sm:inline ${overlay ? "text-white/60" : "text-dim"}`}>

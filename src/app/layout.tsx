@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { PersonJsonLd, WebSiteJsonLd } from "@/components/JsonLd";
 import { site } from "@/content/site";
@@ -9,6 +10,10 @@ const mono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin"],
   weight: ["400", "500"],
+});
+const header = localFont({
+  src: "../fonts/Lumenharmaa.ttf",
+  variable: "--font-header",
 });
 
 export const metadata: Metadata = {
@@ -58,7 +63,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} h-full`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${header.variable} h-full`}>
       <body className="min-h-full bg-bg">
         <PersonJsonLd />
         <WebSiteJsonLd />

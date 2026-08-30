@@ -12,7 +12,7 @@ export default function Resume() {
   const sections = site.resume.sections.filter((s) => s.entries.length > 0);
 
   return (
-    <PageShell slug="resume" title="Resume">
+    <PageShell slug="resume" title="Resume" sectionHeader>
       <div className="mt-8 max-w-2xl space-y-5 leading-relaxed text-dim">
         {site.about.map((p, i) => (
           <p key={i}>{p}</p>

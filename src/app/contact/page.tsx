@@ -12,7 +12,7 @@ export default function Contact() {
   const socials = site.socials.filter((s) => s.url);
 
   return (
-    <PageShell slug="contact" title="Contact">
+    <PageShell slug="contact" title="Contact" sectionHeader>
       <p className="mt-8 max-w-xl leading-relaxed text-dim">
         For features, commercials, branded content, and music videos.
       </p>

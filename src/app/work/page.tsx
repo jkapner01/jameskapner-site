@@ -22,7 +22,7 @@ export default async function Work({ searchParams }: PageProps<"/work">) {
   const shown = active ? projects.filter((p) => p.category === active) : projects;
 
   return (
-    <PageShell slug="work" title="Selected Work">
+    <PageShell slug="work" title="Selected Work" sectionHeader>
       <WorkJsonLd />
 
       {/* Filters — real URLs, so each category is independently crawlable */}

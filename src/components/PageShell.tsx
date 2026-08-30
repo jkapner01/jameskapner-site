@@ -5,10 +5,13 @@ import { SiteFooter } from "@/components/SiteFooter";
 export function PageShell({
   slug,
   title,
+  sectionHeader = false,
   children,
 }: {
   slug: string;
   title: string;
+  /** Use the header display face — reserved for the four top-level section pages. */
+  sectionHeader?: boolean;
   children: React.ReactNode;
 }) {
   return (
@@ -17,7 +20,13 @@ export function PageShell({
       <main className="flex-1 px-4 pt-12 pb-24 sm:px-6">
         <div className="mx-auto max-w-6xl">
           <div className="flex items-baseline justify-between gap-6 border-b border-line pb-4">
-            <h1 className="text-2xl font-medium tracking-[0.02em] sm:text-3xl">
+            <h1
+              className={
+                sectionHeader
+                  ? "header-font text-3xl sm:text-4xl"
+                  : "text-2xl font-medium tracking-[0.02em] sm:text-3xl"
+              }
+            >
               {title}
             </h1>
             <span className="label shrink-0 text-dim">/{slug}</span>

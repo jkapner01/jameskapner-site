@@ -36,7 +36,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "feature-film",
-    title: "Feature Film Title",
+    title: "Feature film title",
     category: "narrative",
     format: "Feature Film",
     year: "2024",
@@ -52,7 +52,7 @@ export const projects: Project[] = [
   },
   {
     slug: "short-film",
-    title: "Short Film Title",
+    title: "Short film title",
     category: "narrative",
     format: "Short Film",
     year: "2023",
@@ -63,7 +63,7 @@ export const projects: Project[] = [
   },
   {
     slug: "commercial-spot",
-    title: "Commercial Spot",
+    title: "Commercial spot",
     category: "commercial",
     format: "Spot",
     client: "Client Name",
@@ -75,7 +75,7 @@ export const projects: Project[] = [
   },
   {
     slug: "branded-campaign",
-    title: "Branded Campaign",
+    title: "Branded campaign",
     category: "branded",
     format: "Campaign",
     client: "Brand Name",
