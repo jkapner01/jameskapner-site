@@ -23,7 +23,7 @@ export function PageShell({
             <h1
               className={
                 sectionHeader
-                  ? "header-font text-3xl sm:text-4xl"
+                  ? "header-font text-[36px] sm:text-[43.2px]"
                   : "text-2xl font-medium tracking-[0.02em] sm:text-3xl"
               }
             >

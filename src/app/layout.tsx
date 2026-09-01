@@ -12,7 +12,7 @@ const mono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 const header = localFont({
-  src: "../fonts/Dirtybag.ttf",
+  src: "../fonts/Rueckwarzsalto.otf",
   variable: "--font-header",
 });
 
