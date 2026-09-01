@@ -36,12 +36,12 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "feature-film",
-    title: "Feature film title",
+    title: "The Estate",
     category: "narrative",
     format: "Feature Film",
     year: "2024",
     video: "https://www.youtube.com/watch?v=nTItUEujzCw",
-    thumbnail: "/work/placeholder.svg",
+    thumbnail: "/work/the-estate.png",
     description:
       "Replace this with a short synopsis of the feature — one or two sentences that read well in a search result.",
     credits: [
