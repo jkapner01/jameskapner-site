@@ -39,11 +39,11 @@ export const projects: Project[] = [
     title: "The Estate",
     category: "narrative",
     format: "Feature Film",
-    year: "2024",
+    year: "2021",
     video: "https://www.youtube.com/watch?v=nTItUEujzCw",
     thumbnail: "/work/the-estate.png",
     description:
-      "Replace this with a short synopsis of the feature — one or two sentences that read well in a search result.",
+      "Kapner's directorial debut is The Estate, a dark comedic thriller that made its North American premiere at Newport Beach Film Festival in 2020, and its streaming premiere on Hulu. When a narcissistic son (Chris Baker), yearning for a life of luxury, and his father's erratic gold-digging wife (Eliza Coupe) decide to kill their way into their inheritance, they employ the help of an absurdly handsome, mysterious hitman (Greg Finley), initiating a psychosexual love triangle that spirals into more than anyone bargained for. Deftly balancing sharp humor and horror, THE ESTATE delivers a perfectly campy, wildly enjoyable thrill ride that Rob Rector of FILM THREAT gave \"....9 stars out of 10\".",
     credits: [
       { role: "Director", name: "James Kapner" },
       { role: "Cinematographer", name: "—" },
