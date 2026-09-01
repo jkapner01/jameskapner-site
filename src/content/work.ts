@@ -40,7 +40,7 @@ export const projects: Project[] = [
     category: "narrative",
     format: "Feature Film",
     year: "2024",
-    video: "",
+    video: "https://www.youtube.com/watch?v=nTItUEujzCw",
     thumbnail: "/work/placeholder.svg",
     description:
       "Replace this with a short synopsis of the feature — one or two sentences that read well in a search result.",
