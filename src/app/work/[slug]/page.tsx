@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { projects, bySlug, categories } from "@/content/work";
+import { projects, bySlug, categories, fullDescription } from "@/content/work";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { PageShell } from "@/components/PageShell";
 import { ProjectJsonLd } from "@/components/JsonLd";
@@ -21,11 +21,11 @@ export async function generateMetadata({
 
   return {
     title: p.title,
-    description: p.description,
+    description: fullDescription(p),
     alternates: { canonical: `/work/${p.slug}` },
     openGraph: {
       title: `${p.title} — ${site.name}`,
-      description: p.description,
+      description: fullDescription(p),
       type: "video.other",
       images: p.thumbnail ? [p.thumbnail] : undefined,
     },
@@ -80,6 +80,11 @@ export default async function Project({ params }: PageProps<"/work/[slug]">) {
           <p className="mt-8 max-w-2xl leading-relaxed text-dim">
             {p.description}
           </p>
+          {p.logline && (
+            <p className="mt-4 max-w-2xl leading-relaxed text-dim italic">
+              {p.logline}
+            </p>
+          )}
         </div>
 
         {p.credits && p.credits.length > 0 && (

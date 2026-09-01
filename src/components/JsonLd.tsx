@@ -3,7 +3,7 @@
  * read to understand who James is and what he has made.
  */
 import { site } from "@/content/site";
-import { projects } from "@/content/work";
+import { projects, fullDescription } from "@/content/work";
 
 export function PersonJsonLd() {
   const data = {
@@ -65,7 +65,7 @@ export function WorkJsonLd() {
           ? "Movie"
           : "VideoObject",
         name: p.title,
-        description: p.description,
+        description: fullDescription(p),
         url: `${site.url}/work/${p.slug}`,
         director: { "@type": "Person", name: site.name },
       },
@@ -83,7 +83,7 @@ export function ProjectJsonLd({ slug }: { slug: string }) {
     "@context": "https://schema.org",
     "@type": isFeature ? "Movie" : "VideoObject",
     name: p.title,
-    description: p.description,
+    description: fullDescription(p),
     url: `${site.url}/work/${p.slug}`,
     ...(isFeature ? { dateCreated: p.year } : { uploadDate: `${p.year}-01-01` }),
     director: { "@type": "Person", name: site.name, url: site.url },
