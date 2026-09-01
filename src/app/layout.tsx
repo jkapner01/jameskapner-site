@@ -12,7 +12,7 @@ const mono = JetBrains_Mono({
   weight: ["400", "500"],
 });
 const header = localFont({
-  src: "../fonts/Baron Kuffner.otf",
+  src: "../fonts/Capture it.ttf",
   variable: "--font-header",
 });
 
