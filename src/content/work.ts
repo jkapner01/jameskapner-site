@@ -80,6 +80,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "commercial-spot-3",
+    title: "Commercial spot",
+    category: "commercial",
+    format: "Spot",
+    client: "Client Name",
+    year: "2024",
+    video: "https://vimeo.com/306155008",
+    thumbnail: "/work/commercial-spot-3.png",
+    description: "A one-line description of the spot and what it was for.",
+    featured: true,
+  },
+  {
     slug: "branded-campaign",
     title: "Branded campaign",
     category: "branded",
