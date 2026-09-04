@@ -55,17 +55,6 @@ export const projects: Project[] = [
     featured: true,
   },
   {
-    slug: "short-film",
-    title: "Short film title",
-    category: "narrative",
-    format: "Short Film",
-    year: "2023",
-    video: "",
-    thumbnail: "/work/placeholder.svg",
-    description: "A one-line description of the short.",
-    featured: true,
-  },
-  {
     slug: "commercial-spot",
     title: "Commercial spot",
     category: "commercial",
