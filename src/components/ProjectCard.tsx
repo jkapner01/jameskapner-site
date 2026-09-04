@@ -36,7 +36,7 @@ export function ProjectCard({
             {project.title}
           </h3>
           <p className="label mt-1 truncate text-dim">
-            {[project.client, project.format].filter(Boolean).join(" / ")}
+            {project.client || project.format}
           </p>
         </div>
         <span className="label shrink-0 tabular-nums text-dim">
