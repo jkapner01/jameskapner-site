@@ -7,8 +7,8 @@
 export const categories = [
   { slug: "narrative", label: "Narrative" },
   { slug: "commercial", label: "Commercial" },
-  { slug: "branded", label: "Branded" },
   { slug: "music-video", label: "Music Video" },
+  { slug: "branded", label: "Branded" },
 ] as const;
 
 export type CategorySlug = (typeof categories)[number]["slug"];
