@@ -81,10 +81,10 @@ export const projects: Project[] = [
   },
   {
     slug: "commercial-spot-3",
-    title: "Commercial spot",
+    title: "Locomotion",
     category: "commercial",
     format: "Spot",
-    client: "Client Name",
+    client: "Porsche",
     year: "2024",
     video: "https://vimeo.com/306155008",
     thumbnail: "/work/commercial-spot-3.png",
