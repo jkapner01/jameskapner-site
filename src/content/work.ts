@@ -68,6 +68,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "easton-spot",
+    title: "Commercial spot",
+    category: "commercial",
+    format: "Spot",
+    client: "Client Name",
+    year: "2024",
+    video: "https://vimeo.com/444627797",
+    thumbnail: "/work/easton-spot.png",
+    description: "A one-line description of the spot and what it was for.",
+    featured: true,
+  },
+  {
     slug: "branded-campaign",
     title: "Branded campaign",
     category: "branded",
