@@ -57,10 +57,10 @@ export const projects: Project[] = [
   },
   {
     slug: "commercial-spot",
-    title: "Commercial spot",
+    title: "Chris Pratt x The Perfect Pant",
     category: "commercial",
     format: "Spot",
-    client: "Client Name",
+    client: "TravisMathew",
     year: "2024",
     video: "https://www.youtube.com/watch?v=xdCGayDmFP0",
     thumbnail: "/work/commercial-spot.png",
