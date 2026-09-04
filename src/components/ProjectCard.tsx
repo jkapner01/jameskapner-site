@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { Project } from "@/content/work";
+import { categories, type Project } from "@/content/work";
 
 export function ProjectCard({
   project,
@@ -9,6 +9,8 @@ export function ProjectCard({
   project: Project;
   index: number;
 }) {
+  const categoryLabel = categories.find((c) => c.slug === project.category)?.label;
+
   return (
     <Link
       href={`/work/${project.slug}`}
@@ -36,7 +38,7 @@ export function ProjectCard({
             {project.title}
           </h3>
           <p className="label mt-1 truncate text-dim">
-            {project.client || project.format}
+            {project.client ? `${categoryLabel} / ${project.client}` : project.format}
           </p>
         </div>
         <span className="label shrink-0 tabular-nums text-dim">

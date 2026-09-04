@@ -72,7 +72,7 @@ export const projects: Project[] = [
     title: "Commercial spot",
     category: "commercial",
     format: "Spot",
-    client: "Client Name",
+    client: "Easton",
     year: "2024",
     video: "https://vimeo.com/444627797",
     thumbnail: "/work/easton-spot.png",
