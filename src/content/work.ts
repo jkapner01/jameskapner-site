@@ -92,6 +92,18 @@ export const projects: Project[] = [
     featured: true,
   },
   {
+    slug: "music-video-1",
+    title: "Music video title",
+    category: "music-video",
+    format: "Music Video",
+    client: "Artist Name",
+    year: "2024",
+    video: "https://www.youtube.com/watch?v=O05xBkCKqaw",
+    thumbnail: "/work/music-video-1.png",
+    description: "A one-line description of the music video.",
+    featured: true,
+  },
+  {
     slug: "branded-campaign",
     title: "Branded campaign",
     category: "branded",
