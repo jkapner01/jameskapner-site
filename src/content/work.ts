@@ -69,7 +69,7 @@ export const projects: Project[] = [
   },
   {
     slug: "easton-spot",
-    title: "Commercial spot",
+    title: "Stay Ready with Alex Bregman",
     category: "commercial",
     format: "Spot",
     client: "Easton",
