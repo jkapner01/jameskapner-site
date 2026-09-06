@@ -93,10 +93,10 @@ export const projects: Project[] = [
   },
   {
     slug: "music-video-1",
-    title: "Music video title",
+    title: "Dear Diamond",
     category: "music-video",
     format: "Music Video",
-    client: "Artist Name",
+    client: "Blaqstarr f. Common",
     year: "2024",
     video: "https://www.youtube.com/watch?v=O05xBkCKqaw",
     thumbnail: "/work/music-video-1.png",
