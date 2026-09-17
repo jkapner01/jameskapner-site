@@ -77,11 +77,11 @@ export default async function Project({ params }: PageProps<"/work/[slug]">) {
           {p.client && <Spec label="client">{p.client}</Spec>}
           <Spec label="year">{p.year}</Spec>
 
-          <p className="mt-8 max-w-2xl leading-relaxed text-dim">
+          <p className="bodoni mt-8 max-w-2xl leading-relaxed text-dim">
             {p.description}
           </p>
           {p.logline && (
-            <p className="mt-4 max-w-2xl leading-relaxed text-dim italic">
+            <p className="bodoni mt-4 max-w-2xl leading-relaxed text-dim italic">
               {p.logline}
             </p>
           )}
@@ -125,7 +125,7 @@ function Spec({
   return (
     <div className="flex gap-4 border-b border-line py-2 text-sm">
       <span className="label w-24 shrink-0 pt-0.5 text-white/30">{label}</span>
-      <span>{children}</span>
+      <span className="bodoni">{children}</span>
     </div>
   );
 }
