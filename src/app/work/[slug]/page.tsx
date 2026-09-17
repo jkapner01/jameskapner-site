@@ -73,7 +73,6 @@ export default async function Project({ params }: PageProps<"/work/[slug]">) {
               {category?.label.toLowerCase()}
             </Link>
           </Spec>
-          <Spec label="format">{p.format.toLowerCase()}</Spec>
           {p.client && <Spec label="client">{p.client}</Spec>}
           <Spec label="year">{p.year}</Spec>
 
