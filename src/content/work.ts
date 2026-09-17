@@ -126,7 +126,7 @@ export const projects: Project[] = [
     video: "https://vimeo.com/253307343/d7a373f9d0",
     thumbnail: "/work/damnation.png",
     description:
-      "A peek at the real world historical events that inspired the seemingly larger than life stories of the prohibition era heartland explored in the acclaimed USA Networks show Damnation.",
+      "A peek at the real world historical events that inspired the seemingly larger than life prohibition era stories explored in the acclaimed USA Networks show Damnation.",
     featured: true,
   },
 ];
