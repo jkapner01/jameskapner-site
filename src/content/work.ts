@@ -125,7 +125,8 @@ export const projects: Project[] = [
     year: "2017",
     video: "https://vimeo.com/253307343/d7a373f9d0",
     thumbnail: "/work/damnation.png",
-    description: "A one-line description of the branded piece.",
+    description:
+      "A peek at the real world historical events that inspired the seemingly larger than life stories of the prohibition era heartland explored in the acclaimed USA Networks show Damnation.",
     featured: true,
   },
 ];
