@@ -3,16 +3,16 @@ import { site } from "@/content/site";
 import { PageShell } from "@/components/PageShell";
 
 export const metadata: Metadata = {
-  title: "Resume",
+  title: "About",
   description: `Filmography, commercial work, and awards for ${site.name}, ${site.role.toLowerCase()} based in ${site.location}.`,
-  alternates: { canonical: "/resume" },
+  alternates: { canonical: "/about" },
 };
 
-export default function Resume() {
+export default function About() {
   const sections = site.resume.sections.filter((s) => s.entries.length > 0);
 
   return (
-    <PageShell title="Resume" sectionHeader>
+    <PageShell title="About" sectionHeader>
       <div className="bodoni mt-8 max-w-2xl space-y-5 leading-relaxed text-dim">
         {site.about.map((p, i) => (
           <p key={i}>{p}</p>
