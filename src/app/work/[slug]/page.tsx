@@ -97,7 +97,7 @@ export default async function Project({ params }: PageProps<"/work/[slug]">) {
                   className="flex justify-between gap-4 border-t border-line py-2 text-sm"
                 >
                   <dt className="label text-dim">{c.role}</dt>
-                  <dd className="text-right">{c.name}</dd>
+                  <dd className="bodoni text-right">{c.name}</dd>
                 </div>
               ))}
             </dl>
