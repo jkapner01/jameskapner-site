@@ -16,7 +16,7 @@ const header = localFont({
   variable: "--font-header",
 });
 const bodoni = localFont({
-  src: "../fonts/RobotoSlab-Thin.ttf",
+  src: "../fonts/GFSDidot-Regular.ttf",
   variable: "--font-bodoni",
 });
 
