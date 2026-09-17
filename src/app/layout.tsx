@@ -15,6 +15,10 @@ const header = localFont({
   src: "../fonts/Baron Kuffner.otf",
   variable: "--font-header",
 });
+const bodoni = localFont({
+  src: "../fonts/BodoniHand.otf",
+  variable: "--font-bodoni",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -63,7 +67,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable} ${header.variable} h-full`}>
+    <html lang="en" className={`${sans.variable} ${mono.variable} ${header.variable} ${bodoni.variable} h-full`}>
       <body className="min-h-full bg-bg">
         <PersonJsonLd />
         <WebSiteJsonLd />

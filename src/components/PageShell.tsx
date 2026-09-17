@@ -22,7 +22,7 @@ export function PageShell({
               className={
                 sectionHeader
                   ? "header-font text-[36px] sm:text-[43.2px]"
-                  : "text-2xl font-medium tracking-[0.02em] sm:text-3xl"
+                  : "bodoni text-2xl font-medium tracking-[0.02em] sm:text-3xl"
               }
             >
               {title}

@@ -23,6 +23,7 @@
   --font-mono: var(--font-mono);
   --font-sans: var(--font-sans);
   --font-header: var(--font-header);
+  --font-bodoni: var(--font-bodoni);
 }
 
 html {
@@ -49,6 +50,11 @@ body {
   font-family: var(--font-header), ui-serif, serif;
   text-transform: uppercase;
   letter-spacing: 0.03em;
+}
+
+/* Reserved for video titles and select body copy (resume bio, contact copy). */
+.bodoni {
+  font-family: var(--font-bodoni), Georgia, serif;
 }
 
 ::selection {

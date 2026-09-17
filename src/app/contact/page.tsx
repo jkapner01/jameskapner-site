@@ -13,7 +13,7 @@ export default function Contact() {
 
   return (
     <PageShell title="Contact" sectionHeader>
-      <p className="mt-8 max-w-xl leading-relaxed text-dim">
+      <p className="bodoni mt-8 max-w-xl leading-relaxed text-dim">
         For features, commercials, branded content, and music videos.
       </p>
 
@@ -21,7 +21,7 @@ export default function Contact() {
         <Row label="email">
           <a
             href={`mailto:${site.contact.email}`}
-            className="transition-colors hover:text-signal"
+            className="bodoni transition-colors hover:text-signal"
           >
             {site.contact.email}
           </a>
@@ -29,7 +29,9 @@ export default function Contact() {
         {site.contact.representation && (
           <Row label="representation">{site.contact.representation}</Row>
         )}
-        <Row label="based in">{site.location}</Row>
+        <Row label="based in">
+          <span className="bodoni">{site.location}</span>
+        </Row>
         {socials.length > 0 && (
           <Row label="elsewhere">
             <span className="flex flex-wrap gap-x-5 gap-y-2">

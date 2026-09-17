@@ -34,7 +34,7 @@ export function ProjectCard({
 
       <div className="flex items-baseline justify-between gap-4 border-t border-line px-3 py-3">
         <div className="min-w-0">
-          <h3 className="truncate text-base font-medium transition-colors group-hover:text-signal">
+          <h3 className="bodoni truncate text-base font-medium transition-colors group-hover:text-signal">
             {project.title}
           </h3>
           <p className="label mt-1 truncate text-dim">
