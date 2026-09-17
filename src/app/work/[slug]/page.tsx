@@ -40,7 +40,7 @@ export default async function Project({ params }: PageProps<"/work/[slug]">) {
   const category = categories.find((c) => c.slug === p.category);
 
   return (
-    <PageShell slug={`work/${p.slug}`} title={p.title}>
+    <PageShell title={p.title}>
       <ProjectJsonLd slug={p.slug} />
 
       <div className="mt-6">
