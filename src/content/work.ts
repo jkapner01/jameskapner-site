@@ -99,11 +99,13 @@ export const projects: Project[] = [
     title: "Dear Diamond",
     category: "music-video",
     format: "Music Video",
-    client: "Blaqstarr f. Common",
+    client: "Mad Decent",
     year: "2014",
     video: "https://www.youtube.com/watch?v=O05xBkCKqaw",
     thumbnail: "/work/music-video-1.png",
-    description: "A one-line description of the music video.",
+    description:
+      "Seminal label Mad Decent released this genre bending track from legendary Baltimore multi-instrumentalist/DJ/producer Blaqstarr, who enlisted legacy hip-hop artist Common to add to the melancholic and beautiful framework of the song. The collab elicited something wholly unique, beautiful, and timeless, which the visuals sought to capture in a blend of past, present, and future.",
+    logline: "Starring actress Jodie Turner-Smith.",
     featured: true,
   },
   {
