@@ -74,7 +74,7 @@ export const site = {
   ] as { outlet: string; headline: string; url?: string; year?: string }[],
 
   contact: {
-    email: "hello@jameskapner.com",
+    email: "jkapner@gmail.com",
     /** Optional — leave "" to hide the row. */
     representation: "",
   },

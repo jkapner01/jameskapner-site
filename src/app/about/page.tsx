@@ -57,10 +57,6 @@ export default function About() {
           </dl>
         </section>
       ))}
-
-      {sections.length === 0 && (
-        <p className="label mt-12 text-dim">credits pending</p>
-      )}
     </PageShell>
   );
 }
