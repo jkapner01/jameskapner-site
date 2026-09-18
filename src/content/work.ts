@@ -113,11 +113,12 @@ export const projects: Project[] = [
     title: "Step Yo Game Up",
     category: "music-video",
     format: "Music Video",
-    client: "Chali 2na",
+    client: "Mass Appeal",
     year: "2010",
     video: "https://www.youtube.com/watch?v=i2nOLGNjWnk",
     thumbnail: "/work/music-video-2.png",
-    description: "A one-line description of the music video.",
+    description:
+      "Legendary member of Jurassic 5 and Ozomatli and one of hip hop's most iconic voices, Chali 2na, stars in this sunshine neo-noir which finds him navigating a byzantine mystery that leads him down a more and more dangerous path to confront his greatest enemy - himself.",
     featured: true,
   },
   {
