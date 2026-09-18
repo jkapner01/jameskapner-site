@@ -91,7 +91,7 @@ export const projects: Project[] = [
     year: "2018",
     video: "https://vimeo.com/306155008",
     thumbnail: "/work/commercial-spot-3.png",
-    description: "A one-line description of the spot and what it was for.",
+    description: "A cavalcade headed up the coast never looked so good.",
     featured: true,
   },
   {
