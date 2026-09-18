@@ -78,7 +78,8 @@ export const projects: Project[] = [
     year: "2019",
     video: "https://vimeo.com/444627797",
     thumbnail: "/work/easton-spot.png",
-    description: "A one-line description of the spot and what it was for.",
+    description:
+      "MLB superstar Alex Bregman returns home after a hard fought season. But that doesn't mean his work is done. Get a sneak peek at his HQ, which is furnished with an Easton branded batting cage, so he can be ready 24/7. There are no days off on a path to greatness.",
     featured: true,
   },
   {
