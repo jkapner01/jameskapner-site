@@ -65,7 +65,8 @@ export const projects: Project[] = [
     year: "2022",
     video: "https://www.youtube.com/watch?v=xdCGayDmFP0",
     thumbnail: "/work/commercial-spot.png",
-    description: "A one-line description of the spot and what it was for.",
+    description:
+      "Chris Pratt wistfully ponders whether the TravisMathew Perfect Pant can make him perfect as well. Spoiler alert - probably not.",
     featured: true,
   },
   {
